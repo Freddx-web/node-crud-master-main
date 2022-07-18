@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>welcome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <style type="text/css">
+        .ghbmd {
+             display: none!important;  
+        }
+
+        .oscuro{ 
+            background-color: #1f1f1f; 
+            color: #f1eded; 
+        }
+        .oscuro th {
+            background-color: #1f1f1f; 
+            color: #f1eded; 
+        }
+        .oscuro td, span {
+            background-color: #1f1f1f; 
+            color: #f1eded; 
+        }
+    </style>
+  </head>
+  <body>
+    <br>
+    <div class="container">
+    <div class="d-flex flex-row-reverse bd-highlight">
+      <div class="p-2 bd-highlight">
+        <button type="button" class="btn btn-danger">Cerrar session</button> | <button type="button" class="btn btn-dark" onclick="cambiarModo()">Oscuro / Claro</button> <b>Modo</b>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Welcome</h1>
+    <div class="row">
+      <p>Welcome this is E- mail: </p>
+      <div class="col-sm-12 col-md-6 col-lg-6">
+          <p>
+            Hola este es Inicio navegacion de la App Web:
+          </p>
+          <p>
+            Pagina de <a href="/productos">/productos</a>
+          </p>
+          <p>
+            Pagina de <a href="/usuarios">/usuarios</a>
+          </p>
+      </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script type="text/javascript"> 
+      function cambiarModo() { 
+        var cuerpoweb = document.body; 
+        cuerpoweb.classList.toggle("oscuro"); 
+      } 
+    </script>
+  </body>
+</html>

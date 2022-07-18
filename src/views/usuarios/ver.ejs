@@ -1,0 +1,38 @@
+<%- include("../header"); %>
+<div class="col-12">
+    <h3>Usuarios</h3>
+    <a href="/usuarios/agregar" class="btn btn-primary mb-2">Agregar usuarios</a>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>id</th>
+                <th>Nombre usuarios</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% usuarios.forEach(usuario => { %>
+            <tr>
+                <td><%= usuario.id %></td>
+                <td><%= usuario.nombre %></td>
+                <td><%= usuario.email %></td>
+                <td><%= usuario.password %></td>
+                <td>
+                    <a href="/usuarios/editar/<%= usuario.id %>" class="btn btn-success">
+                        Editar
+                    </a>
+                </td>
+                <td>
+                    <a href="/usuarios/eliminar/<%= usuario.id %>" class="btn btn-danger">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            <% })%>
+        </tbody>
+    </table>
+    <p>Pagina de inicio <a href="http://localhost:3000/">Home</a></p>
+</div>
+<%- include("../footer"); %>

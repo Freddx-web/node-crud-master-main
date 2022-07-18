@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Conexión MySQL y Node">
+    <title>Conexión MySQL y Node</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style type="text/css">
+        .ghbmd {
+             display: none!important;  
+        }
+
+        .oscuro{ 
+            background-color: #1f1f1f; 
+            color: #f1eded; 
+        }
+        .oscuro th {
+            background-color: #1f1f1f; 
+            color: #f1eded; 
+        }
+        .oscuro td, span {
+            background-color: #1f1f1f; 
+            color: #f1eded; 
+        }
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Inicio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <!-- Termina la definición del menú -->
+  <main role="main" class="container">
+    <div class="row">
+      <div class="d-flex flex-row-reverse bd-highlight">
+        <div class="p-2 bd-highlight">
+          <button type="button" class="btn btn-dark" onclick="cambiarModo()">Oscuro / Claro</button> <b>Modo</b>
+        </div>
+      </div>
+    </div>
+   <h1><%= title %></h1>
+   <br>
+    <p><img src="https://img.icons8.com/color/32/undefined/mongodb.png"/><%= subtitle1 %></p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <p><img src="https://img.icons8.com/color/32/undefined/mongodb.png"/>MongoDB database data:</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark34</td>
+          <td>Otto23@gmail.com</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob235</td>
+          <td>Thornto54n@gmail.com</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry13Bird@gmail.com</td>
+          <td>@twitter</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+  </main>
+  <script>
+    let url = 'https://jsonplaceholder.typicode.com/users'
+    fetch(url)
+        .then(response => response.json())
+        .then(data => mostrarData(data))
+        .catch(error => console.log(error))
+        const mostrarData = (data) => {
+            console.log(data)
+            let body = ''
+            for (let i = 0; i<data.length; i++){
+              body += `
+                <tr>
+                  <th scope="row">${data[i].id}</th>
+                  <td>${data[i].name }</td>
+                  <td>${data[i].email.substring(0, 9) }</td> 
+                  <td>${data[i].phone } </td>
+                </tr>`                
+            }
+          document.getElementById('data').innerHTML = body
+        }            
+  </script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script type="text/javascript"> 
+    function cambiarModo() { 
+      var cuerpoweb = document.body; 
+      cuerpoweb.classList.toggle("oscuro"); 
+    } 
+  </script>
+  <script type="text/javascript">
+    // Tomado de https://github.com/parzibyte/cotizaciones_web/blob/master/js/cotizaciones.js#L2
+    document.addEventListener("DOMContentLoaded", () => {
+      const menu = document.querySelector("#menu"),
+      botonMenu = document.querySelector("#botonMenu");
+      if (menu) {
+        botonMenu.addEventListener("click", () => menu.classList.toggle("show"));
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>
